@@ -60,13 +60,13 @@ class HttpCurlDriver implements HttpDriverInterface
     public function getHttpResponse($headerString, $body)
     {
         $headers = array();
-        preg_match('/(?<version>\S+) (?P<code>\d+) (?P<message>\V+)/', $headerString, $headers);
+        preg_match('/(?<version>\S+) (?P<code>\d+)/', $headerString, $headers);
 
         $response = new HttpDriverResponse();
 
         $response->setBody($body);
         $response->setHttpCode($headers['code']);
-        $response->setHttpMessage($headers['message']);
+        #$response->setHttpMessage($headers['message']);
         $response->setHttpVersion($headers['version']);
         $response->setHeaders($headerString);
 
